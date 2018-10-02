@@ -1,10 +1,10 @@
-NAME		= shit_book
+NAME		= Bills_PC
 
 CC			= g++
 CFLAGS		+= -Wall -Werror -Wextra
 INC			= -I.
 
-SRC			= shit_book.cpp \
+SRC			= Bills_PC.cpp \
 			  Book.class.cpp \
 			  Entry.class.cpp \
 
