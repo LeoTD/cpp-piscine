@@ -6,7 +6,7 @@
 
 class Book {
 	private:
-		Entry		*_entry;
+		Entry		_entry[8];
 		int			_nbr_entries;
 
 	public:

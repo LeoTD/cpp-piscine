@@ -4,13 +4,13 @@
 #include <iomanip>
 
 Book::Book() {
-	_entry = new Entry[8]();
+	//_entry = new Entry[8]();
 	_nbr_entries = 0;
 	return ;
 }
 
 Book::~Book() {
-	delete[] _entry;
+	//delete[] _entry;
 	return ;
 }
 
