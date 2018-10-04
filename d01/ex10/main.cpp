@@ -3,34 +3,30 @@
 #include <sstream>
 
 int			main(int ac, char ** av) {
-	if (ac != 4) {
-		//usage();
+	if (ac == 1) {
+		std::string		buf;
+		while (!std::cin.eof()) {
+			std::getline(std::cin, buf);
+			std::cout << buf << std::endl;
+			//std::cout << std::cin.rdbuf();
+		}
 		return 0;
+	} else {
+		for (int i = 1; i < ac; i++) {
+			std::string			fname(av[i]);
+			std::stringstream	ss;
+			std::ifstream		ifs(fname);
+
+			if (!ifs.is_open()) {
+				std::cout << "cat 'o nine tails: " << fname << ": No such file or directory" << std::endl;
+				continue ;
+			}
+
+			ss << ifs.rdbuf();
+			ifs.close();
+
+			std::cout << ss.str();
+		}
 	}
-
-	std::string			fname(av[1]);
-	std::string			find(av[2]);
-	std::string			replace(av[3]);
-
-	std::streampos		size;
-	std::string			buf;
-	std::ifstream		ifs(fname);
-	std::stringstream	ss;
-
-	ss << ifs.rdbuf();
-	buf = ss.str();
-	ifs.close();
-
-	int					found_index;
-
-	while ( (unsigned long)(found_index = buf.find(find)) != std::string::npos ) {
-		buf.replace(found_index, find.length(), replace);
-	}
-
-	fname += ".replace";
-	std::ofstream		ofs(fname);
-
-	ofs << buf << std::endl;
-
 	return 0;
 }
