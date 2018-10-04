@@ -51,7 +51,7 @@ void		Book::search() {
 	int				idx;
 
 	print_entries();
-	while (1) {
+	while (1 && _nbr_entries) {
 		std::cout << "Choose your Pokemon! (Enter index)> ";
 		std::getline(std::cin, buf);
 		if (buf[0] >= '0' && buf[0] <= '7' && buf[1] == '\0') {
