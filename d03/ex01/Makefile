@@ -6,6 +6,7 @@ INC			= -I.
 
 SRC			= main.cpp \
 			  FragTrap.class.cpp \
+			  ScavTrap.class.cpp \
 
 BLUE		= \033[38;5;105;1m
 GREEN		= \033[1;32m

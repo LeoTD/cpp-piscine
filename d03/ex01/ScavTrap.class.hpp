@@ -1,22 +1,22 @@
-#ifndef FRAGTRAP_CLASS_HPP
-# define FRAGTRAP_CLASS_HPP
+#ifndef SCAVTRAP_CLASS_HPP
+# define SCAVTRAP_CLASS_HPP
 
 # include <iostream>
 # include <string>
 
-class FragTrap {
+class ScavTrap {
 public:
-	FragTrap(std::string);
-	FragTrap(FragTrap const &);
-	FragTrap &operator=(FragTrap const &);
-	~FragTrap();
+	ScavTrap(std::string);
+	ScavTrap(ScavTrap const &);
+	ScavTrap &operator=(ScavTrap const &);
+	~ScavTrap();
 
 	void			rangedAttack(std::string const &) const;
 	void			meleeAttack(std::string const &) const;
 	void			takeDamage(unsigned int);
 	void			beRepaired(unsigned int);
 	void			displayStatus(void) const;
-	void			vaulthunter_dot_exe(std::string const &);
+	void			challengeNewcomer(std::string const &);
 	std::string		getName(void) const;
 
 	unsigned int	_get_hp(void) const;
@@ -51,6 +51,6 @@ private:
 	
 };
 
-std::ostream &		operator<<(std::ostream &, FragTrap const &);
+std::ostream &		operator<<(std::ostream &, ScavTrap const &);
 
 #endif

@@ -35,19 +35,31 @@ FragTrap::~FragTrap() {
 
 FragTrap &	FragTrap::operator=(FragTrap const & that) {
 	if (this != &that) {
-		
+		_set_hp(that._get_hp());
+		_set_MAX_HP(that._get_MAX_HP());
+		_set_energy(that._get_energy());
+		_set_MAX_ENERGY(that._get_MAX_ENERGY());
+		_set_level(that._get_level());
+		_set_name(that._get_name());
+		_set_melee_dmg(that._get_melee_dmg());
+		_set_ranged_dmg(that._get_ranged_dmg());
+		_set_armor(that._get_armor());
 	}
 	return *this;
 }
 
 std::ostream &	operator<<(std::ostream & os, FragTrap const & that) {
-
+	os << that.getName();
 	return os;
 }
 
 // --------------------------------------------------------- //
 // ---- Functions										---- //
 // --------------------------------------------------------- //
+
+std::string			FragTrap::getName(void) const {
+	return _name;
+}
 
 void				FragTrap::displayStatus() const {
 	std::cout << "<FR4G-TP; " << _name << "> ";
@@ -164,4 +176,80 @@ void			FragTrap::vaulthunter_dot_exe(std::string const & tar) {
 	} else {
 		rangedAttack(tar);
 	}
+}
+
+// --------------------------------------------------------- //
+// ---- Getters and Setters								---- //
+// --------------------------------------------------------- //
+
+unsigned int	FragTrap::_get_hp(void) const {
+	return _hp;
+}
+
+void			FragTrap::_set_hp(unsigned int nval) {
+	_hp = nval;
+}
+
+unsigned int	FragTrap::_get_MAX_HP(void) const {
+	return _MAX_HP;
+}
+
+void			FragTrap::_set_MAX_HP(unsigned int nval) {
+	_MAX_HP = nval;
+}
+
+unsigned int	FragTrap::_get_energy(void) const {
+	return _energy;
+}
+
+void			FragTrap::_set_energy(unsigned int nval) {
+	_energy = nval;
+}
+
+unsigned int	FragTrap::_get_MAX_ENERGY(void) const {
+	return _MAX_ENERGY;
+}
+
+void			FragTrap::_set_MAX_ENERGY(unsigned int nval) {
+	_MAX_ENERGY = nval;
+}
+
+unsigned int	FragTrap::_get_level(void) const {
+	return _level;
+}
+
+void			FragTrap::_set_level(unsigned int nval) {
+	_level = nval;
+}
+
+std::string		FragTrap::_get_name(void) const {
+	return _name;
+}
+
+void			FragTrap::_set_name(std::string const & nval) {
+	_name = nval;
+}
+
+unsigned int	FragTrap::_get_melee_dmg(void) const {
+	return _melee_dmg;
+}
+
+void			FragTrap::_set_melee_dmg(unsigned int nval) {
+	_melee_dmg = nval;
+}
+
+unsigned int	FragTrap::_get_ranged_dmg(void) const {
+	return _ranged_dmg;
+}
+
+void			FragTrap::_set_ranged_dmg(unsigned int nval) {
+	_ranged_dmg = nval;
+}
+
+unsigned int	FragTrap::_get_armor(void) const {
+	return _armor;
+}
+
+void			FragTrap::_set_armor(unsigned int nval) {
+	_armor = nval;
 }
