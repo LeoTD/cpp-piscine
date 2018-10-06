@@ -8,6 +8,8 @@ SRC			= main.cpp \
 			  ClapTrap.class.cpp \
 			  FragTrap.class.cpp \
 			  ScavTrap.class.cpp \
+			  NinjaTrap.class.cpp \
+			  SuperTrap.class.cpp \
 
 BLUE		= \033[38;5;105;1m
 GREEN		= \033[1;32m

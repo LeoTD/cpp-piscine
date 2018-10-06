@@ -1,19 +1,19 @@
-#include "ScavTrap.class.hpp"
+#include "FragTrap.class.hpp"
 
 // --------------------------------------------------------- //
 // ---- Constructors and Init							---- //
 // --------------------------------------------------------- //
 
-void		ScavTrap::init(void) {
+void		FragTrap::init(void) {
 	_set_hp(100);
 	_set_MAX_HP(100);
-	_set_energy(50);
-	_set_MAX_ENERGY(50);
+	_set_energy(100);
+	_set_MAX_ENERGY(100);
 	_set_level(1);
-	_set_melee_dmg(20);
-	_set_ranged_dmg(15);
-	_set_armor(3);
-	_set_type("\033[91mSC4V-TP\033[m");
+	_set_melee_dmg(30);
+	_set_ranged_dmg(20);
+	_set_armor(5);
+	_set_type("\033[94mFR4G-TP\033[m");
 
 	_meleeMessage[0] = "Take THAT!";
 	_meleeMessage[1] = "There is no way this ends badly!";
@@ -32,26 +32,26 @@ void		ScavTrap::init(void) {
 	_repairMessage[2] = "Mmm. That's the STUFF!";
 }
 
-ScavTrap::ScavTrap()
+FragTrap::FragTrap()
 {
 	init();
-	_set_name("ScavTrap");
+	_set_name("FragTrap");
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+FragTrap::FragTrap(std::string name)
 {
 	init();
 	_set_name(name);
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const & that) {
+FragTrap::FragTrap(FragTrap const & that) {
 	*this = that;
 	return ;
 }
 
-ScavTrap::~ScavTrap() {
+FragTrap::~FragTrap() {
 
 	return ;
 }
@@ -60,7 +60,7 @@ ScavTrap::~ScavTrap() {
 // ---- Operators										---- //
 // --------------------------------------------------------- //
 
-ScavTrap &	ScavTrap::operator=(ScavTrap const & that) {
+FragTrap &	FragTrap::operator=(FragTrap const & that) {
 	if (this != &that) {
 		_set_hp(that._get_hp());
 		_set_MAX_HP(that._get_MAX_HP());
@@ -71,12 +71,11 @@ ScavTrap &	ScavTrap::operator=(ScavTrap const & that) {
 		_set_melee_dmg(that._get_melee_dmg());
 		_set_ranged_dmg(that._get_ranged_dmg());
 		_set_armor(that._get_armor());
-		_set_type(that._get_type());
 	}
 	return *this;
 }
 
-std::ostream &	operator<<(std::ostream & os, ScavTrap const & that) {
+std::ostream &	operator<<(std::ostream & os, FragTrap const & that) {
 	os << that._get_name();
 	return os;
 }
@@ -85,26 +84,17 @@ std::ostream &	operator<<(std::ostream & os, ScavTrap const & that) {
 // ---- Functions										---- //
 // --------------------------------------------------------- //
 
-void			ScavTrap::challengeNewcomer(std::string const & tar) const {
-	unsigned int	r = arc4random() % 5;
+void				FragTrap::vaulthunter_dot_exe(std::string const & tar) {
+	if (_get_energy() < 25) {
+		std::cout << "<" << _get_type() << "; " << _get_name() << "> ";
+		std::cout << "So, tired..." << std::endl;
+		return ;
+	}
+	_set_energy(_get_energy() - 25);
 
-	std::cout << "<" << _get_type() << "; " << _get_name() << "> ";
-	std::cout << "Hey " << tar << "! ";
-	switch(r) {
-		case 0:
-			std::cout << "You versus me! Me versus you! Either way!" << std::endl;
-			break ;
-		case 1:
-			std::cout << "I will prove to you my robotic superiority!" << std::endl;
-			break ;
-		case 2:
-			std::cout << "Man versus machine! Very tiny streamlined machine!" << std::endl;
-			break ;
-		case 3:
-			std::cout << "Care to have a friendly duel?" << std::endl;
-			break ;
-		case 4:
-			std::cout << "Dance battle! Or, you know... regular battle." << std::endl;
-			break ;
+	if (arc4random() % 2) {
+		meleeAttack(tar);
+	} else {
+		rangedAttack(tar);
 	}
 }

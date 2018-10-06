@@ -85,7 +85,14 @@ std::ostream &	operator<<(std::ostream & os, ScavTrap const & that) {
 // ---- Functions										---- //
 // --------------------------------------------------------- //
 
-void			ScavTrap::challengeNewcomer(std::string const & tar) const {
+void			ScavTrap::challengeNewcomer(std::string const & tar) {
+	if (_get_energy() < 25) {
+		std::cout << "<" << _get_type() << "; " << _get_name() << "> ";
+		std::cout << "So, tired..." << std::endl;
+		return ;
+	}
+	_set_energy(_get_energy() - 25);
+
 	unsigned int	r = arc4random() % 5;
 
 	std::cout << "<" << _get_type() << "; " << _get_name() << "> ";

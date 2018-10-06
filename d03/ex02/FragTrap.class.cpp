@@ -13,7 +13,7 @@ void		FragTrap::init(void) {
 	_set_melee_dmg(30);
 	_set_ranged_dmg(20);
 	_set_armor(5);
-	_set_type("FR4G-TP");
+	_set_type("\033[94mFR4G-TP\033[m");
 
 	_meleeMessage[0] = "Take THAT!";
 	_meleeMessage[1] = "There is no way this ends badly!";
